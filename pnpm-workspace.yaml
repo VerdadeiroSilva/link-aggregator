@@ -1,3 +1,6 @@
 packages:
+  - 'api'
+  - 'frontend'
+  - 'infrastructure'
   - 'scraper'
-  - '*' # opcional, para pegar todos os subdiretórios
+  - '*'
