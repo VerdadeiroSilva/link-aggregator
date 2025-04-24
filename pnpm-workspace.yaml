@@ -1,0 +1,3 @@
+packages:
+  - 'scraper'
+  - '*' # opcional, para pegar todos os subdiretórios

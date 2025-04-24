@@ -1,0 +1,10 @@
+{
+    "schema": {
+        "rootUrl": "https://www.estantevirtual.com.br",
+        "rootList": "https://www.estantevirtual.com.br/livro",
+        "listSelector": "section.product-list > div.product-list__items",
+        "productSelector": ".product-item > a",
+        "listPageIterator": "?page={}"
+    },
+    "sitemap": "https://www.estantevirtual.com.br/sitemap.xml"
+}
