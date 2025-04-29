@@ -3,8 +3,13 @@
         "rootUrl": "https://www.estantevirtual.com.br",
         "rootList": "https://www.estantevirtual.com.br/livro",
         "listSelector": "section.product-list > div.product-list__items",
+        "coverSelector": "img#product-image.product-item__image",
         "productSelector": ".product-item > a",
-        "listPageIterator": "?page={}"
+        "priceSelector": "[data-auto='price']",
+        "titleSelector": "h2.product-item__name",
+        "authorSelector": "p.product-item__author",
+        "listPageIterator": "?page={}",
+        "productCategory": "used-book"
     },
     "sitemap": "https://www.estantevirtual.com.br/sitemap.xml"
 }
