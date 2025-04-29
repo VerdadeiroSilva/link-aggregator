@@ -1,3 +1,5 @@
+import 'bulma/css/bulma.min.css';
+
 import { createApp } from 'vue';
 import App from './App.vue';
 import { router } from './router';

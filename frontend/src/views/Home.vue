@@ -1,29 +1,25 @@
 <template>
-    <div class="home">
+    <div class="home has-text-centered pt-5">
       <h1>{{ title }}</h1>
-      <BookList :books="filteredBooks" />
+      <BookList :books="books" />
     </div>
   </template>
   
   <script setup lang="ts">
+
+  import { fetchNewBooks, type Book } from '../api/books';
   import BookList from '../components/BookList.vue';
   import { useRoute } from 'vue-router';
-  import { computed } from 'vue';
+  import { computed, onMounted, ref } from 'vue';
   
   const route = useRoute();
-  
-  const books = [
-    { cover: 'https://via.placeholder.com/60x90', title: 'Livro A', link: '#', price: 'R$ 39,90', category: 'novos' },
-    { cover: 'https://via.placeholder.com/60x90', title: 'Livro B', link: '#', price: 'R$ 29,90', category: 'usados' },
-    { cover: 'https://via.placeholder.com/60x90', title: 'Livro C', link: '#', price: 'R$ 59,90', category: 'novos' },
-  ];
-  
+  const books = ref<Book[]>([]);
+
+  onMounted(async () => {
+    books.value = await fetchNewBooks();
+  });
   const category = computed(() => route.path.replace('/', ''));
   
   const title = computed(() => (category.value === 'usados' ? 'Livros Usados' : 'Livros Novos'));
-  
-  const filteredBooks = computed(() =>
-    books.filter(book => book.category === category.value)
-  );
+
   </script>
-  

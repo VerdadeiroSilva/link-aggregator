@@ -1,44 +1,38 @@
 <template>
-    <div class="book-item">
-      <img :src="cover" alt="Book cover" class="book-cover" />
-      <div class="book-info">
-        <a :href="link" target="_blank">{{ title }}</a>
-        <p class="price">{{ price }}</p>
+  <div class="box is-flex is-align-items-center book-container">
+      <figure class="book-cover">
+        <img class="image is-3by4" :src="`http://localhost:5984/links/${_id}/cover.webp`" alt="Book cover" />
+      </figure>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong><a :href="url" target="_blank">{{ title }}</a></strong><br>
+          <small class="price">R$ {{ price }}</small>
+        </p>
       </div>
     </div>
-  </template>
+    <figure class="image is-64x64 mr-4">
+      <img :src="`http://localhost:5984/sellers/${seller}/seller.webp`" alt="Book Seller" class="book-seller" />
+    </figure>
+  </div>
+</template>
   
-  <script setup lang="ts">
+<script setup lang="ts">
   defineProps<{
-    cover: string;
+    _id: string,
+    category: string,
     title: string;
-    link: string;
+    url: string;
     price: string;
+    seller: string;
   }>();
-  </script>
-  
-  <style scoped>
-  .book-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-  
+</script>
+
+<style lang="css" scoped>
   .book-cover {
-    width: 60px;
-    height: 90px;
-    object-fit: cover;
+    width: 64px;
   }
-  
-  .book-info {
-    display: flex;
-    flex-direction: column;
+  .book-container {
+    max-height: 120px;
   }
-  
-  .price {
-    color: #555;
-    font-weight: bold;
-  }
-  </style>
-  
+</style>
