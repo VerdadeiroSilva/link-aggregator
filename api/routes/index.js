@@ -1,5 +1,15 @@
 import { HttpStatusCode } from 'axios';
-import { getAllLinks, getByCategory } from '../interfaces/http/input.js';
+import { getAllLinks, getByCategory, getPending } from '../interfaces/http/input.js';
+
+const getPendingLinksHandler = async (req, res) => {
+    try {
+        const links = await getPending();
+        res.json(links);
+    } catch (err) {
+        console.error(err);
+        res.status(HttpStatusCode.InternalServerError).json({ error: 'Erro ao buscar links pendentes' })
+    }
+}
 
 const getAllLinksHandler = async (req, res) => {
     try {
@@ -37,6 +47,7 @@ const deleteLinkByIdHandler = async (req, res) => {
 }
 
 const RouteHandlers = {
+    getPending: getPendingLinksHandler,
     getAll: getAllLinksHandler,
     getByCategory: getByCategoryHandler,
     postLink: postLinkByIdHandler,
